@@ -5,29 +5,14 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         int[] nums = {3, 1, 5, 2, 1, 4};
-        bubbleSort(nums); //{1, 1, 2, 3, 4, 5}
+        selectionSort(nums); //{1, 1, 2, 3, 4, 5}
 
         System.out.println(Arrays.toString(nums));
     }
 
-    /*
-    31      5214
-    1 35    214
-    13 52   14
-    132 51 4
-    1321 54
-    132145
-
-    13  214
-    1 32 14
-    12 31 4
-    121 34
-    12134       |4
-
-    12 13
-    1 21 3
-    11 23
-    1123        |3
+    /**
+     * Sorts an array of int by bubbleSort
+     * @param nums input array of int
      */
     public static void bubbleSort(int[] nums) {
         for (int i = 0; i < nums.length - 1; i++) {
@@ -39,6 +24,25 @@ public class Main {
                     nums[j + 1] = temp;
                 }
             }
+        }
+    }
+
+    /**
+     * Sorts an array of int by selectionSort
+     * @param nums input array of int
+     */
+    public static void selectionSort(int[] nums) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            int minIdx = i;
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] < nums[minIdx]) {
+                    minIdx = j;
+                }
+            }
+            //swap nums[i] and nums[minIdx]
+            int temp = nums[i];
+            nums[i] = nums[minIdx];
+            nums[minIdx] = temp;
         }
     }
 }
